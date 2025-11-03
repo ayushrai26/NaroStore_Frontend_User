@@ -48,6 +48,10 @@ const Profile = () => {
 
   const handleSave = async (updatedData) => {
     try {
+      if(!updatedData.fullName.trim() || !updatedData.email.trim() || !updatedData.mobileNumber.trim()){
+           toast.error('Missing Fields')
+           return
+      }
       const res = await fetch("https://narostore-backend.onrender.com/user/update-user", {
         method: "PUT",
         credentials: "include",

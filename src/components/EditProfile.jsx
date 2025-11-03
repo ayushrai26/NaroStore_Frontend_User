@@ -44,6 +44,7 @@ const EditProfile = ({ user, onClose, onSave }) => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
+              
               className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:text-gray-100"
             />
           </div>
