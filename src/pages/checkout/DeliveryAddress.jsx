@@ -47,7 +47,7 @@ const DeliveryAddress = () => {
       const handleCheckout = async(formdata)=>{
     try{
     
-    const response = await fetch('http://localhost:3000/payment/create-checkout-session', {
+    const response = await fetch('https://narostore-backend.onrender.com/payment/create-checkout-session', {
       method: 'POST',
       credentials:'include',
       headers: { 'Content-Type': 'application/json' },

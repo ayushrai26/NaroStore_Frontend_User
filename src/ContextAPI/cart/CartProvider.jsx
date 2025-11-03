@@ -16,7 +16,7 @@ function CartProvider({children}) {
            return
          }
          try{
-          const response = await fetch('http://localhost:3000/cart/fetch-cart-products',{
+          const response = await fetch('https://narostore-backend.onrender.com/cart/fetch-cart-products',{
              method:'GET',
              credentials:'include'
           })
@@ -50,7 +50,7 @@ const addToCart = async({productId,quantity,size,price}) => {
  return; 
   }
     try{
-      const response = await fetch('http://localhost:3000/cart/add-to-cart',{
+      const response = await fetch('https://narostore-backend.onrender.com/cart/add-to-cart',{
         method:'POST',
         credentials:'include',
         headers:{
@@ -77,7 +77,7 @@ const addToCart = async({productId,quantity,size,price}) => {
   const handleDelete = async(productId,size)=>{
        try{
       
-        const res = await fetch('http://localhost:3000/cart/remove-item',{
+        const res = await fetch('https://narostore-backend.onrender.com/cart/remove-item',{
           method:'DELETE',
           credentials:'include',
           headers:{
@@ -99,7 +99,7 @@ const addToCart = async({productId,quantity,size,price}) => {
 
     const handleLogout = async()=>{
         try{
-          const res = await fetch('http://localhost:3000/user/log-out',{
+          const res = await fetch('https://narostore-backend.onrender.com/user/log-out',{
             credentials:'include'
           })
     

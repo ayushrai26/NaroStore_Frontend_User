@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getAccessToken = async () => {
       try {
-        const res = await fetch("http://localhost:3000/user/generate-access-token", {
+        const res = await fetch("https://narostore-backend.onrender.com/user/generate-access-token", {
           method: "GET",
           credentials: "include",
         });
@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const res = await fetch("http://localhost:3000/user/generate-access-token", {
+        const res = await fetch("https://narostore-backend.onrender.com/user/generate-access-token", {
           method: "GET",
           credentials: "include",
         });

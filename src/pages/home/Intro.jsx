@@ -11,7 +11,7 @@ function HomePage() {
   const navigate = useNavigate()
   const fetchProduct = async()=>{
     try{
-     const response = await fetch('http://localhost:3000/products/fetch-product-homePage')
+     const response = await fetch('https://narostore-backend.onrender.com/products/fetch-product-homePage')
      const data = await response.json()
      console.log(data,'data')
       if(response.ok){

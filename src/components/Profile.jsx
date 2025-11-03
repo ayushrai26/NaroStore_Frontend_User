@@ -36,7 +36,7 @@ const Profile = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("http://localhost:3000/order/fetch-user-order", {
+      const res = await fetch("https://narostore-backend.onrender.com/order/fetch-user-order", {
         credentials: "include",
       });
       const data = await res.json();
@@ -48,7 +48,7 @@ const Profile = () => {
 
   const handleSave = async (updatedData) => {
     try {
-      const res = await fetch("http://localhost:3000/user/update-user", {
+      const res = await fetch("https://narostore-backend.onrender.com/user/update-user", {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

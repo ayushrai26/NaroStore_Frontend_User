@@ -70,7 +70,7 @@ const Cart = () => {
             </div>
           ) : (
             <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-8">
-              {/* Cart Items */}
+              
               <div className="flex-1 bg-white dark:bg-gray-700 shadow-lg rounded-2xl p-6 space-y-4">
                 {cartItems.map((item) => (
                   <div
@@ -91,7 +91,7 @@ const Cart = () => {
                           ₹{item.productId.price.toLocaleString()}
                         </p>
 
-                        {/* Quantity and Size */}
+                      
                         <div className="flex items-center gap-4 mt-3">
                           <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-600 px-3 py-1 rounded-full">
                             <span className="text-sm font-medium dark:text-gray-100">
@@ -126,7 +126,7 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    {/* Price & Delete */}
+                  
                     <div className="flex items-center gap-3 mt-4 sm:mt-0">
                       <p className="font-medium text-purple-600 dark:text-purple-400">
                         ₹{(item.productId.price * item.quantity).toLocaleString()}
@@ -143,7 +143,7 @@ const Cart = () => {
                 ))}
               </div>
 
-              {/* Order Summary */}
+            
               <div className="w-full lg:w-1/3 bg-white dark:bg-gray-700 shadow-lg rounded-2xl p-6 h-fit">
                 <h2 className="text-xl font-bold mb-4 dark:text-gray-100">
                   Order Summary

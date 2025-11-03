@@ -24,7 +24,7 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchSingleProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/products/fetch-product/${productId}`);
+        const response = await fetch(`https://narostore-backend.onrender.com/products/fetch-product/${productId}`);
         const data = await response.json();
         setProduct(data.product);
         setProductPrice(data.product.price);
@@ -35,7 +35,7 @@ const ProductPage = () => {
 
     const fetchReviews = async () => {
       try {
-        const res = await fetch('http://localhost:3000/products/fetch-reviews', {
+        const res = await fetch('https://narostore-backend.onrender.com/products/fetch-reviews', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ productId }),
@@ -77,7 +77,7 @@ const ProductPage = () => {
 
   const formSubmit = async (formdata) => {
     try {
-      const res = await fetch('http://localhost:3000/products/submit-review', {
+      const res = await fetch('https://narostore-backend.onrender.com/products/submit-review', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

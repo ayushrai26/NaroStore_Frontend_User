@@ -20,7 +20,7 @@ function Navbar() {
 
     const fetchUserDetail = async () => {
       try {
-        const res = await fetch("http://localhost:3000/user/fetch-user-details", {
+        const res = await fetch("https://narostore-backend.onrender.com/user/fetch-user-details", {
           credentials: "include",
           headers: { "Content-Type": "application/json" },
         });
@@ -48,7 +48,7 @@ function Navbar() {
       className="backdrop-blur-lg  dark:bg-gray-900/50 shadow-md fixed top-0 w-full z-50 border-b border-gray-200 dark:border-gray-700"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* ==== Logo ==== */}
+      
         <Link
           to="/"
           className="text-2xl font-extrabold bg-linear-to-r from-amber-500 via-pink-500 to-purple-600 bg-clip-text text-transparent hover:opacity-90 transition"

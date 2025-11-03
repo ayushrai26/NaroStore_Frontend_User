@@ -10,20 +10,20 @@ function DisplayProduct({ searchQuery, category, priceRange, filterProducts }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3000/products/fetch-all-products");
+        const response = await fetch("https://narostore-backend.onrender.com/products/fetch-all-products");
         const data = await response.json();
         console.log(data, "data");
         setProducts(data.allProducts);
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false); // stop loading once fetch completes
+        setIsLoading(false); 
       }
     };
     fetchProducts();
   }, []);
 
-  // 🩶 Skeleton loader template for product cards
+
   const SkeletonCard = () => (
     <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-md">
       <Skeleton height={200} className="rounded-xl" />
@@ -35,7 +35,7 @@ function DisplayProduct({ searchQuery, category, priceRange, filterProducts }) {
     </div>
   );
 
-  // If loading, show skeletons
+  
   if (isLoading) {
     return (
       <div className="mt-10 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -46,7 +46,7 @@ function DisplayProduct({ searchQuery, category, priceRange, filterProducts }) {
     );
   }
 
-  // 🩶 Display filtered or all products
+  
   return (
     <div className="mt-10 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {searchQuery || category !== "all" || priceRange !== "all" ? (

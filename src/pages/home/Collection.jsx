@@ -11,7 +11,7 @@ function Collection() {
   useEffect(() => {
   const fetchFiltered = async () => {
     try {
-      const res = await fetch("http://localhost:3000/products/filter-products", {
+      const res = await fetch("https://narostore-backend.onrender.com/products/filter-products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ searchQuery, category, priceRange }),

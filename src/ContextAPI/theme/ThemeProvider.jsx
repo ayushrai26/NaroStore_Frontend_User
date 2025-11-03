@@ -8,7 +8,7 @@ function ThemeProvider({children}) {
   };
 
   useEffect(() => {
-    document.documentElement.className = theme; // Applies theme to <html>
+    document.documentElement.className = theme; 
   }, [theme]);
   return (
    <ThemeContext.Provider value={{theme,toggleTheme}} >

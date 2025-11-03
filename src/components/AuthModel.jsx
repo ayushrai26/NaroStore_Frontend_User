@@ -23,8 +23,8 @@ const AuthModal = () => {
 
   const onSubmit = async (formdata) => {
     const url = isLogin
-      ? "http://localhost:3000/user/sign-in-user"
-      : "http://localhost:3000/user/sign-up-user";
+      ? "https://narostore-backend.onrender.com/user/sign-in-user"
+      : "https://narostore-backend.onrender.com//user/sign-up-user";
 
       setIsLoading(true)
     try {
@@ -49,7 +49,7 @@ const AuthModal = () => {
       reset();
 
       if (isLogin) {
-        toast.success(`Welcome Back, ${result.isUserExist.fullName.split(" ")[0]} 👋`);
+        toast.success(`Welcome Back, ${result.isUserExist.fullName.split(" ")[0]}`);
         setIsAuthenticated(true);
         navigate("/");
       } else {

@@ -42,9 +42,9 @@ function ProductCard({ product }) {
  useEffect(() => {
   const fetchReviews = async () => {
     try {
-      if (!product?._id) return; // avoid calling if product not loaded
+      if (!product?._id) return;
 
-      const res = await fetch("http://localhost:3000/products/fetch-reviews", {
+      const res = await fetch("https://narostore-backend.onrender.com/products/fetch-reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId: product._id }),
