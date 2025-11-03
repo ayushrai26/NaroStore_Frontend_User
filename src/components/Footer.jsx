@@ -31,10 +31,10 @@ function Footer() {
         <div>
           <h4 className="text-lg font-semibold text-white mb-3">Support</h4>
           <ul className="space-y-2 text-sm">
-            <li><a href="/contact" className="hover:text-amber-400 transition-colors">Contact Us</a></li>
-            <li><a href="/shipping" className="hover:text-amber-400 transition-colors">Shipping Info</a></li>
-            <li><a href="/returns" className="hover:text-amber-400 transition-colors">Returns</a></li>
-            <li><a href="/faq" className="hover:text-amber-400 transition-colors">FAQ</a></li>
+            <li><Link to="/contact" className="hover:text-amber-400 transition-colors">Contact Us</Link></li>
+            <li>< Link to="/shipping" className="hover:text-amber-400 transition-colors">Shipping Info</Link></li>
+            <li><Link to="/returns" className="hover:text-amber-400 transition-colors">Returns</Link></li>
+            <li><Link to="/faq" className="hover:text-amber-400 transition-colors">FAQ</Link></li>
           </ul>
         </div>
 
