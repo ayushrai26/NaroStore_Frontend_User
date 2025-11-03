@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductCard from "./productCard";
+import ProductCard from "./ProductCard";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
