@@ -22,7 +22,7 @@ const Profile = () => {
 
   const fetchUserDetail = async () => {
     try {
-      const res = await fetch("http://localhost:3000/user/fetch-user-details", {
+      const res = await fetch("https://narostore-backend.onrender.com/user/fetch-user-details", {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
