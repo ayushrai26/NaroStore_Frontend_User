@@ -4,7 +4,7 @@ import cartContext from "../ContextAPI/cart/createContext";
 import EditProfile from "./EditProfile";
 import { FaRupeeSign } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Profile = () => {
   const [user, setUser] = useState({});
   const [orders, setOrders] = useState([]);
@@ -22,7 +22,7 @@ const Profile = () => {
 
   const fetchUserDetail = async () => {
     try {
-      const res = await fetch("https://narostore-backend.onrender.com/user/fetch-user-details", {
+      const res = await fetch(`${API_URL}/user/fetch-user-details`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -36,7 +36,7 @@ const Profile = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("https://narostore-backend.onrender.com/order/fetch-user-order", {
+      const res = await fetch(`${API_URL}/order/fetch-user-order`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -52,7 +52,7 @@ const Profile = () => {
            toast.error('Missing Fields')
            return
       }
-      const res = await fetch("https://narostore-backend.onrender.com/user/update-user", {
+      const res = await fetch(`${API_URL}/user/update-user`, {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

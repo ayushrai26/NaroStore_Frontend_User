@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import TokenContext from "./ContextAPI/token/createContext";
 import { useLocation } from "react-router-dom";
-
+const API_URL = import.meta.env.VITE_API_URL
 function App() {
   const { setIsAuthenticated } = useContext(TokenContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getAccessToken = async () => {
       try {
-        const res = await fetch("https://narostore-backend.onrender.com/user/generate-access-token", {
+        const res = await fetch(`${API_URL}/user/generate-access-token`, {
           method: "GET",
           credentials: "include",
         });

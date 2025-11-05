@@ -3,6 +3,7 @@ import TokenContext from "../token/createContext"
 import CartContext from "./createContext"
 import { useContext, useEffect, useState } from "react"
 import {toast} from 'react-hot-toast'
+const API_URL = import.meta.env.VITE_API_URL;
 function CartProvider({children}) {
  const [cartItems,setCartItems] = useState([])
  const [cartUpdated,setCartUpdated] = useState(false)
@@ -16,7 +17,7 @@ function CartProvider({children}) {
            return
          }
          try{
-          const response = await fetch('https://narostore-backend.onrender.com/cart/fetch-cart-products',{
+          const response = await fetch(`${API_URL}/cart/fetch-cart-products`,{
              method:'GET',
              credentials:'include'
           })
@@ -50,7 +51,7 @@ const addToCart = async({productId,quantity,size,price}) => {
  return; 
   }
     try{
-      const response = await fetch('https://narostore-backend.onrender.com/cart/add-to-cart',{
+      const response = await fetch(`${API_URL}/cart/add-to-cart`,{
         method:'POST',
         credentials:'include',
         headers:{
@@ -73,11 +74,36 @@ const addToCart = async({productId,quantity,size,price}) => {
     
   };
 
+const updateCart = async({productId,size,type})=>{
+    if(!productId&&!size&&!type){
+       toast.error('Please Select size and Product')
+       return;
+    }
+       try{
+      const response = await fetch(`${API_URL}/cart/update-quantity`,{
+        method:'PATCH',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({productId,size,type}),
+        credentials:'include'
+      })
+      const data = await response.json()
+      console.log(data)
+      if(response.ok){
+        setCartUpdated(prev=>!prev)
+      }
+      
+     
+    }catch(err){
+       console.log(err)
+    }
+}
 
   const handleDelete = async(productId,size)=>{
        try{
       
-        const res = await fetch('https://narostore-backend.onrender.com/cart/remove-item',{
+        const res = await fetch(`${API_URL}/cart/remove-item`,{
           method:'DELETE',
           credentials:'include',
           headers:{
@@ -99,7 +125,7 @@ const addToCart = async({productId,quantity,size,price}) => {
 
     const handleLogout = async()=>{
         try{
-          const res = await fetch('https://narostore-backend.onrender.com/user/log-out',{
+          const res = await fetch(`${API_URL}/user/log-out`,{
             credentials:'include'
           })
     
@@ -120,7 +146,7 @@ const addToCart = async({productId,quantity,size,price}) => {
 
   return (
     
-    <CartContext.Provider value={{cartItems,setCartItems,addToCart,totalPrice,handleDelete,handleLogout}}>
+    <CartContext.Provider value={{cartItems,setCartItems,addToCart,totalPrice,handleDelete,handleLogout,updateCart}}>
         {children}
     </CartContext.Provider>
     

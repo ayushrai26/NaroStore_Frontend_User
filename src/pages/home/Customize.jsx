@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUpload, FaRupeeSign } from "react-icons/fa";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function Customize() {
   const [selectedType, setSelectedType] = useState("");
   const [selectedColor, setSelectedColor] = useState("#ffffff");

@@ -5,13 +5,14 @@ import { Star, ShoppingBag, Sparkles, ArrowRight } from "lucide-react";
 import { useState,useEffect } from "react";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 function HomePage() {
   
   const [products,setProducts] = useState([])
   const navigate = useNavigate()
   const fetchProduct = async()=>{
     try{
-     const response = await fetch('https://narostore-backend.onrender.com/products/fetch-product-homePage')
+     const response = await fetch(`${API_URL}/products/fetch-product-homePage`)
      const data = await response.json()
      console.log(data,'data')
       if(response.ok){

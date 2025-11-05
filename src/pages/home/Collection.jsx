@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import DisplayProducts from '../../components/DisplayProduct';
-
+const API_URL = import.meta.env.VITE_API_URL;
 function Collection() {
   const [searchQuery,setSearchQuery] = useState('')
   const [category,setCategory] = useState('all')
@@ -11,7 +11,7 @@ function Collection() {
   useEffect(() => {
   const fetchFiltered = async () => {
     try {
-      const res = await fetch("https://narostore-backend.onrender.com/products/filter-products", {
+      const res = await fetch(`${API_URL}/products/filter-products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ searchQuery, category, priceRange }),

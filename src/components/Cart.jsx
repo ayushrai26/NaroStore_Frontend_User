@@ -4,33 +4,24 @@ import { VscAccount } from "react-icons/vsc";
 import { Link, useNavigate } from "react-router-dom";
 import TokenContext from "../ContextAPI/token/createContext";
 import cartContext from "../ContextAPI/cart/createContext";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Cart = () => {
   const { isAuthenticated } = useContext(TokenContext);
-  const { cartItems, handleDelete, setCartItems, totalPrice,cartUpdated,setCartUpdated } = useContext(cartContext);
+  const { cartItems, handleDelete,  totalPrice,updateCart, } = useContext(cartContext);
   const navigate = useNavigate();
 
   const shippingCharge = cartItems.length > 0 ? 99 : 0;
 
-  const handleIncrease = (id) => {
-    const updated = cartItems.map((item) =>
-      item.productId._id === id
-        ? { ...item, quantity: item.quantity + 1 }
-        : item
-    );
-    setCartItems(updated);
-    setCartUpdated(prev=>!prev)
-  };
+  const handleIncrease = (id, size) => {
+    
+    updateCart({productId:id,size,type:'increase'})
 
-  const handleDecrease = (id) => {
-    const updated = cartItems.map((item) =>
-      item.productId._id === id && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-    setCartItems(updated);
-    setCartUpdated(prev=>!prev)
-  };
+};
+
+const handleDecrease = (id, size) => {
+  updateCart({productId:id,size,type:'decrease'})
+};
+
 
   const handleCheckout = () => {
     const product = { cartItems };
@@ -97,21 +88,24 @@ const Cart = () => {
                             <span className="text-sm font-medium dark:text-gray-100">
                               Qty:
                             </span>
-                            <button
-                              onClick={() => handleDecrease(item.productId._id)}
-                              className="px-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500"
-                            >
-                              −
-                            </button>
-                            <span className="font-semibold dark:text-gray-100">
-                              {item.quantity}
-                            </span>
-                            <button
-                              onClick={() => handleIncrease(item.productId._id)}
-                              className="px-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500"
-                            >
-                              +
-                            </button>
+                           <button
+  onClick={() => handleDecrease(item.productId._id, item.size)}
+  className="px-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500"
+>
+  −
+</button>
+
+<span className="font-semibold dark:text-gray-100">
+  {item.quantity}
+</span>
+
+<button
+  onClick={() => handleIncrease(item.productId._id, item.size)}
+  className="px-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500"
+>
+  +
+</button>
+
                           </div>
 
                           <div className="flex items-center gap-2 bg-blue-50 dark:bg-gray-600 px-3 py-1 rounded-full">

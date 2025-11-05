@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 import { ClipLoader } from "react-spinners";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const AuthModal = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -23,8 +24,8 @@ const AuthModal = () => {
 
   const onSubmit = async (formdata) => {
     const url = isLogin
-      ? "https://narostore-backend.onrender.com/user/sign-in-user"
-      : "https://narostore-backend.onrender.com//user/sign-up-user";
+      ? `${API_URL}/user/sign-in-user`
+      : `${API_URL}/user/sign-up-user`;
 
       setIsLoading(true)
     try {

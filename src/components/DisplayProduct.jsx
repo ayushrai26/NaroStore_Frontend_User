@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function DisplayProduct({ searchQuery, category, priceRange, filterProducts }) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,7 @@ function DisplayProduct({ searchQuery, category, priceRange, filterProducts }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://narostore-backend.onrender.com/products/fetch-all-products");
+        const response = await fetch(`${API_URL}/products/fetch-all-products`);
         const data = await response.json();
         console.log(data, "data");
         setProducts(data.allProducts);

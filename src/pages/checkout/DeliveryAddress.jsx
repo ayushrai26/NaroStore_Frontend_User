@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {toast} from 'react-hot-toast'
 import TokenContext from "../../ContextAPI/token/createContext";
+const API_URL = import.meta.env.VITE_API_URL;
 const DeliveryAddress = () => {
         
   const location = useLocation();          
@@ -47,7 +48,7 @@ const DeliveryAddress = () => {
       const handleCheckout = async(formdata)=>{
     try{
     
-    const response = await fetch('https://narostore-backend.onrender.com/payment/create-checkout-session', {
+    const response = await fetch(`${API_URL}/payment/create-checkout-session`, {
       method: 'POST',
       credentials:'include',
       headers: { 'Content-Type': 'application/json' },

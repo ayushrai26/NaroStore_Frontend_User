@@ -7,7 +7,7 @@ import ThemeContext from "../ContextAPI/theme/createContext";
 import TokenContext from "../ContextAPI/token/createContext";
 import cartContext from "../ContextAPI/cart/createContext";
 import { motion } from "framer-motion";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { cartItems } = useContext(cartContext);
@@ -20,7 +20,7 @@ function Navbar() {
 
     const fetchUserDetail = async () => {
       try {
-        const res = await fetch("https://narostore-backend.onrender.com/user/fetch-user-details", {
+        const res = await fetch(`${API_URL}/user/fetch-user-details`, {
           credentials: "include",
           headers: { "Content-Type": "application/json" },
         });
