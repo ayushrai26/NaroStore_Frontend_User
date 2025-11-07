@@ -7,6 +7,7 @@ import ThemeContext from "../ContextAPI/theme/createContext";
 import TokenContext from "../ContextAPI/token/createContext";
 import cartContext from "../ContextAPI/cart/createContext";
 import { motion } from "framer-motion";
+import Icon from '../assets/Naro.png'
 const API_URL = import.meta.env.VITE_API_URL;
 function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -53,7 +54,8 @@ function Navbar() {
           to="/"
           className="text-2xl font-extrabold bg-linear-to-r from-amber-500 via-pink-500 to-purple-600 bg-clip-text text-transparent hover:opacity-90 transition"
         >
-          ✨ Naro<span className="text-gray-800 dark:text-white">Store</span>
+          {/* ✨ Naro<span className="text-gray-800 dark:text-white">Store</span> */}
+          <img src={Icon} className="w-56 h-auto mix-blend-multiply dark:mix-blend-screen object-contain"/>
         </Link>
 
         

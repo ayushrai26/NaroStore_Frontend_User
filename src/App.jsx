@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const res = await fetch("https://narostore-backend.onrender.com/user/generate-access-token", {
+        const res = await fetch(`${API_URL}/user/generate-access-token`, {
           method: "GET",
           credentials: "include",
         });
@@ -61,8 +61,9 @@ function App() {
         console.error("Auto-refresh error:", err);
       }
     }, 9 * 60 * 1000); 
+ return () => clearInterval(interval);
 
-    return () => clearInterval(interval);
+    
   }, []);
 
   if (isLoading) return <div className="text-center mt-10 text-xl">Loading...</div>;

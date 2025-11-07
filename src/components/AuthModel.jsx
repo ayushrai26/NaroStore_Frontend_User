@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 const API_URL = import.meta.env.VITE_API_URL;
-
+import Icon from '../assets/Naro.png'
 const AuthModal = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -69,10 +69,21 @@ const AuthModal = () => {
   if (isAuthenticated) return null;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-amber-100 via-pink-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <>
+    
+    <div className="flex flex-col  justify-center items-center min-h-screen bg-linear-to-br from-amber-100 via-pink-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" >
+      <img 
+  src={Icon} 
+  className="w-56 h-auto mix-blend-multiply dark:mix-blend-screen object-contain mb-15"
+/>
+
+
+
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: -30}}
         animate={{ opacity: 1, y: 0 }}
+        whileHover={{scale:1.1}}
+        
         transition={{ duration: 0.6 }}
         className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-200 dark:border-gray-700"
       >
@@ -150,7 +161,7 @@ const AuthModal = () => {
         </form>
 
         <p className="text-sm text-center text-gray-600 dark:text-gray-300 mt-5">
-          {isLogin ? "Don't have an account?" : "Already a member?"}{" "}
+          {isLogin ? "New to NaroStore?" : "Existing User?"}{" "}
           <button
             onClick={() => {
               setIsLogin(!isLogin);
@@ -158,12 +169,14 @@ const AuthModal = () => {
             }}
             className="text-amber-600 font-semibold hover:underline"
           >
-            {isLogin ? "Sign up" : "Login"}
+            {isLogin ? "Create an account" : "Login"}
           </button>
         </p>
       </motion.div>
     </div>
+    </>
   );
+  
 };
 
 export default AuthModal;
